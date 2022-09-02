@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import User from 'src/users/user.entity';
-import { Connect } from 'twilio/lib/twiml/VoiceResponse';
 import { Repository } from 'typeorm';
 import { Connection } from './connection.entity';
 import { IConnection } from './connection.interface';
