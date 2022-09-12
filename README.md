@@ -9,6 +9,12 @@
 <img src="https://user-images.githubusercontent.com/105823790/189706735-071677fd-dbf3-4325-baea-bc282cc8405e.svg" width=350 />
 
 The aim of this project is to develop a full-stack web application featuring a secured authentification, <br>a chat, and a game of pong playable online with multiple clients.
+  
+### Contributors
+
+<a href="https://github.com/crisCiobanu">Cristian Ciobanu</a>
+  &&
+<a href="https://github.com/dhaliti">Damir Haliti</a>
 
 ### Have a try !
 
