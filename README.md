@@ -2,9 +2,11 @@
   
 # Transcendance Pong
 
-### Made from scratch with
+### Made from scratch with<br><br>
 
 <img src="https://user-images.githubusercontent.com/105823790/189706735-071677fd-dbf3-4325-baea-bc282cc8405e.svg" width=350 />
+  
+<br>
 
 The aim of this project is to develop a full-stack web application featuring a secured authentification, <br>a chat, and an online pong game playable  by multiple clients.
   
