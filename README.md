@@ -22,5 +22,9 @@ Transcendance Pong is a full-stack web application featuring a secured authentif
 
 ### Have a try !
 
-<a href="https://transcendencedb.herokuapp.com"><img src="https://user-images.githubusercontent.com/105823790/189708759-8bd8f59d-003b-4375-bd5b-039fbe6234dd.svg" width=200/></a>
+<a href="https://transcendencedb.herokuapp.com"><img src="https://user-images.githubusercontent.com/105823790/189708759-8bd8f59d-003b-4375-bd5b-039fbe6234dd.svg" width=200/></a><br><br>
+<i>Edit: Due to the removal of Heroku's free product plans, the project is temporarily not available<br>
+You may however still try it locally on your own machine by cloning the repo and running a simple:</i><br>
+```docker-compose up --build```
 </div>
+
