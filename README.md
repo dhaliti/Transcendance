@@ -2,29 +2,30 @@
 
 # Transcendance Pong
 
-<img src="https://user-images.githubusercontent.com/105823790/209397633-444fa776-22e0-48e4-b0e0-805a34eeb809.svg" width=250>
+<img src="https://user-images.githubusercontent.com/105823790/210061787-2949d29e-c210-4c4f-88f4-19aa95fab5ab.svg" width=500>
+<p>Transcendance Pong is a full-stack web implementation of the classic pong game, featuring a secure authentification system, a chat feature, and a multiplayer online pong game. <br>Built with Svelte, NestJS, and PostgreSQL, it uses the most current technologies to offer a contemporary take on a classic</p>
 
-<br><br>
-
-### Made from scratch with<br><br>
-
-<img src="https://user-images.githubusercontent.com/105823790/189706735-071677fd-dbf3-4325-baea-bc282cc8405e.svg" width=350 />
+</div>
   
-<br><br>
-
-Transcendance Pong is a full-stack web application featuring a secured authentification system, <br>a chat, and an online pong game playable by multiple clients.
+## Features
+<li><b>Secure authentification system:</b> Users can create an account and log in to access the chat and pong game features.</li>
+<li><b>Chat:</b> Users can communicate with each other through a chat feature while playing the pong game. The chat allows users to send direct messages to each other, as well as participate in channels. Channels are administrated by users with administrator rights, who can manage the membership and permissions of the channel.</li>
+<li><b>Multiplayer pong game:</b> Multiple users can play a game of pong together in real-time.</li>
   
-### Contributors
+## Contributors
 
-<a href="https://github.com/crisCiobanu">Cristian Ciobanu</a>
-  &&
+<a href="https://github.com/crisCiobanu">Cristian Ciobanu</a><br>
 <a href="https://github.com/dhaliti">Damir Haliti</a>
 
-### Have a try !
+## Running the project locally
 
-<a href="https://transcendencedb.herokuapp.com"><img src="https://user-images.githubusercontent.com/105823790/189708759-8bd8f59d-003b-4375-bd5b-039fbe6234dd.svg" width=200/></a><br><br>
-<i>Edit: Due to the removal of Heroku's free product plans, the project is temporarily not available<br>
-You may however still try it locally on your own machine by cloning the repo and running a simple:</i><br>
-```docker-compose up --build```
-</div>
+Due to the removal of Heroku's free product plans, the project is temporarily not available. However, you can still try it out on your own machine by cloning the repository and running:
+```
+docker-compose up --build
+```
+This will build and start the necessary containers for the project. Once the containers are running, you can access the application in your web browser at http://localhost:8080.
+
+## Licence
+This project is realeased under the MIT Licence.
+
 
