@@ -25,6 +25,17 @@ docker-compose up --build
 ```
 This will build and start the necessary containers for the project. Once the containers are running, you can access the application in your web browser at http://localhost:8080.
 
+## Ressources and documentation
+[Svelte](https://svelte.dev/docs)
+
+[NestJS](https://docs.nestjs.com/)
+
+[Postgres](https://www.postgresql.org/docs/)
+
+[MDN Web Docs for websockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+
+[Authentication and security](https://oauth.net/core/2.0/)
+
 ## Licence
 This project is realeased under the MIT Licence.
 
