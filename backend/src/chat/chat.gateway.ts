@@ -88,7 +88,6 @@ async handleConnection(client: Socket, ...args: any[]) {
   private async sendUpdatePrivateMessages(client: Socket, channel: IChannel){
     const channels = await this.channnelService.getAllDirectMessages(client.data.user);
     for ( const user of channel.users){
-      //const channels = await this.channnelService.getAllDirectMessages(user);
       const connections: IConnection[] = await this.connectionService.findByUserId(user.id);
       for (const connection of connections){
         this.server.to(connection.socket).emit('updatePrivateMessages', channels);
@@ -108,9 +107,6 @@ async handleConnection(client: Socket, ...args: any[]) {
 
   @SubscribeMessage('makeAdmin')
   async giveAdminPrivilegies(client: Socket, payload){
-    // console.log("CHANNEL FROM MAKE ADMIN")
-    // console.log(payload.channel);
-    // console.log(`USER name from make admin ${payload.userName42}`);
     const user = await this.userService.getByLogin42(payload.userName42);
     if (!user || !payload.channel){
       this.server.to(client.id).emit('makeAdminResponse', 'false');
@@ -128,9 +124,6 @@ async handleConnection(client: Socket, ...args: any[]) {
 
   @SubscribeMessage('removeAdmin')
   async removeAdminPrivilegies(client: Socket, payload){
-    // console.log("CHANNEL FROM REMOVE ADMIN")
-    // console.log(payload.channel);
-    // console.log(`USER name from remove admin ${payload.userName42}`);
     const user = await this.userService.getByLogin42(payload.userName42);
     if (!user || !payload.channel){
       this.server.to(client.id).emit('removeAdminResponse', 'false');
@@ -149,16 +142,13 @@ async handleConnection(client: Socket, ...args: any[]) {
   @SubscribeMessage('createRoom')
   async createChannel(client: Socket, payload: IChannel) { 
 
-    // console.log("LOG FROM CREATE CHANNEL");
     const newChannel = await this.channnelService.createChannel(payload, client.data.user);
     if (newChannel)
     {
-      // console.log("LOG FROM CREATE CHANNEL :  IN OK");
       this.server.to(client.id).emit('createRoomResponse', 'OK');
       this.sendCreatedRoom(client, newChannel)
     }
     else{
-      // console.log("LOG FROM CREATE CHANNE : IN EXISTS");
       this.server.to(client.id).emit('createRoomResponse', 'exists');
     }
   }
@@ -253,18 +243,13 @@ async handleConnection(client: Socket, ...args: any[]) {
   @SubscribeMessage('message')
   async onNewMessage(client: Socket, msg: IMessage){
     const muted: boolean = await this.channnelService.checkIfMuted(msg.channel, client.data.user)
-    // console.log(`THE VALUE OF MUTED IS ${muted}`)
     if (muted == true){    
       this.server.to(client.id).emit('messageResponse', 'muted');
       return;
     }
     else {
-      // console.log(msg);
       msg.user = client.data.user;
       const newMsg = await this.messageService.createMessage(msg);
-
-      // console.log("LOG OF NEW MSG");
-      // console.log(newMsg);
 
       this.server.to(client.id).emit('messageResponse', 'unmuted');
       this.sendMessage(client, newMsg);
@@ -272,14 +257,9 @@ async handleConnection(client: Socket, ...args: any[]) {
   }
 
   private async sendMessage(client: Socket, message){
-    // console.log("LOG FROM SEND MESSAGE FUNCTION AT ENTRY");
-    //const channel = message.channel;
 
     const channel = await this.channnelService.getChannelByName(message.channel.name);
-    // console.log(channel);
-    // console.log("LOG FROM SEND MESSAGE FUNCTION");
     for ( const user of channel.users){
-
       console.log(user.userName42);
       const connections: IConnection[] = await this.connectionService.findByUserId(user.id);
       for (const connection of connections){
@@ -352,7 +332,6 @@ async handleConnection(client: Socket, ...args: any[]) {
     else
       this.server.to(client.id).emit('banUserResponse', 'false');
   }
-/////////
 
 @SubscribeMessage('kickUser')
   async kickUser(client: Socket, payload: KickDto){

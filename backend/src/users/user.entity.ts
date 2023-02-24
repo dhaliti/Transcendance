@@ -68,8 +68,6 @@ export class User {
     public level: number;
 
     @Column({
-        // nullable: false,
-        // default: "../../../svelte/public/img/default_profile.png"
     })
     public imageURL: string;
 

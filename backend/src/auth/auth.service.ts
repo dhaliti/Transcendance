@@ -16,19 +16,6 @@ export class AuthService implements AuthenticationProvider{
 
     constructor(private userService: UsersService,
                 private jwtService: JwtService){}
-    // async login(userDto: CreateUserDto){
-    //     const user = await this.validateUser(userDto);
-    //     return this.generateToken(user);
-    // }
-    
-    // async registration(userDto: CreateUserDto){
-    //     const candidate = await this.userService.getByEmail(userDto.email);
-    //     if (candidate)
-    //         throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
-    //     const hashPass = await bcrypt.hash(userDto.password, 5);
-    //     const user = await this.userService.create({...userDto, password: hashPass});
-    //     return this.generateToken(user);
-    // }
 
     async generateToken(user : User){
         const payload = {userName42: user.userName42, id: user.id};
