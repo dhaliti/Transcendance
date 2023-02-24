@@ -18,9 +18,9 @@
 
   export let name: string = 'transcendance';
 
-  let kuki = $cookie;
+  const kuki: string = $cookie;
 
-  let routes = {
+  let routes: any = {
     '/': Home,
     '/pong': Pong,
     '/chat': Chat,
@@ -29,7 +29,7 @@
     '/*': NotFound,
   };
 
-  async function logOut() {
+  async function logOut(): Promise<void> {
     if ($intra == 'true') {
       logged.update((n) => 'false');
       intra.update((n) => 'false');
@@ -39,14 +39,15 @@
       for(let key in localStorage) {
         delete localStorage[key];
     }
-      var cookies = document.cookie?.split(';');
+      let cookies: string[] = document.cookie?.split(';');
 
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        var eqPos = cookie.indexOf('=');
-        var name_cookie = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      for (let i:number = 0; i < cookies.length; i++) {
+        const cookie:string = cookies[i];
+        const eqPos: number = cookie.indexOf('=');
+        const name_cookie: string = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
         document.cookie = name_cookie + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
       }
+
       await fetch(`${BACKEND_URL}/users/logout`, {
         method: 'POST',
         headers: {
@@ -155,7 +156,7 @@
 <style>
 :global(body) {
   position: relative;
-margin: 0, auto;
+margin: 0 auto;
 padding: 0px;
 width: auto;
 height: 100%;
@@ -179,17 +180,13 @@ min-width: 500px;
 
   .menu {
     align-items: center;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 20px auto 0;
   }
   .item {
     font-size: 12px;
     text-align: center;
     display: inline-block;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 5px 20px;
     color: rgb(255, 255, 255);
     background-color: hsl(0, 0%, 44%);
   }
@@ -197,10 +194,7 @@ min-width: 500px;
     font-size: 12px;
     text-align: center;
     display: inline-block;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 5px 20px;
     color: rgb(255, 255, 255);
     background-color: darkslategray;
   }

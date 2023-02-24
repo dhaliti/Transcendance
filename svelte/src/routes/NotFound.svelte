@@ -1,8 +1,9 @@
 <script>
 
-import { currentPage } from "../stores";
-import { onMount } from 'svelte';
-import { FRONTEND_URL, BACKEND_URL} from '../domain.js'
+    import {currentPage} from "../stores";
+    import {onMount} from 'svelte';
+    import {FRONTEND_URL, BACKEND_URL} from '../domain.js'
+
     onMount(() => {
         currentPage.update(n => '');
     })
@@ -14,7 +15,7 @@ import { FRONTEND_URL, BACKEND_URL} from '../domain.js'
         <p>ERROR 404</p>
     </div>
     <div>
-       <a href="{`${FRONTEND_URL}/#/`}">🔙</a>
+        <a href="{`${FRONTEND_URL}/#/`}">🔙</a>
     </div>
 </section>
 
@@ -25,11 +26,13 @@ import { FRONTEND_URL, BACKEND_URL} from '../domain.js'
         text-align: center;
         color: black;
     }
+
     h1 {
         font-size: 3rem;
-        color: balck;
+        color: black;
         font-weight: 900;
     }
+
     a {
         color: black;
         font-size: 3rem;
