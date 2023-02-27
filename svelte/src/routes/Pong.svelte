@@ -10,14 +10,9 @@
         logged,
     } from '../stores.js';
 
-    import io, {Manager} from 'socket.io-client';
+    import io from 'socket.io-client';
     import {onMount} from 'svelte';
     import {onDestroy} from 'svelte';
-    import {beforeUpdate} from 'svelte';
-    import {afterUpdate} from 'svelte';
-    // import { Puck, Paddle } from '../utils.js';
-    import socketGlobal from '../App.svelte'
-    import App from '../App.svelte';
 
     import {FRONTEND_URL, BACKEND_URL} from '../domain.js'
 
@@ -79,7 +74,7 @@
     let games: any = [];
     let otherPlayer: any;
     let currentGame: any;
-    let ingame = 'false';
+    let ingame: string = 'false';
     let gameId: string;
     let gameName: string;
     let scoreRight: number;
@@ -305,8 +300,7 @@
                 if (myPaddle) {
                     ingame = 'endgame';
                     socket.emit('wonByTimeOut', {gameId: gameId});
-                }
-                else {
+                } else {
                     alert('Match is over because one of the two players disconnected');
                     allGames = await fetch(`${BACKEND_URL}/pong/games`, {
                         method: 'GET',
@@ -599,7 +593,7 @@
         {/if}
     {/if}
     {#if ingame == 'false'}
-        <div class="homescreen">
+        <div class="home-screen">
             {#if invited == 'true'}
                 <div
                         style="text-align:center; color:white; display: block;padding-top: 10vw;"
@@ -624,7 +618,7 @@
             {/if}
         </div>
     {:else if ingame == 'waiting'}
-        <div class="homescreen">
+        <div class="home-screen">
             {#if invitation_two == 'true'}
                 <h2 style="color:white; text-align: center; padding-top:15vw;font-size:3vw;">
                     Waiting for <span style="color:dodgerblue">{invitedPlayer_two}</span
@@ -696,17 +690,7 @@
             </button
             >
         </div>
-        <div
-                style="display: block; margin:0 auto; align-items:center;
-    display: flex;
-    align-items: center;
-    margin-top:50px;
-    margin-bottom: 50px;
-    text-align: center;
-    width: 90vw;
-    height: 20vw;
-    border-top: 2px dotted black;
-    border-bottom: 2px dotted black;"
+        <div class="ingame"
         >
             {#if myPaddle == 'leftpaddle'}
                 <div style="display:block;  margin:0 auto;">
@@ -776,12 +760,11 @@
 
 <style>
     :global(body) {
-        /* background-color: red; */
+
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
         sans-serif;
         display: block;
         margin: 0 auto;
-        /* align-items:center; */
     }
 
     .game {
@@ -819,11 +802,9 @@
     }
 
     canvas {
-        padding-left: 0;
-        padding-right: 0;
-        margin: 0 auto;
+        margin: -50px auto 0;
         display: block;
-        width: 90vw;
+        width: 700px;
         max-width: 1024px;
         min-width: 320px;
         object-fit: contain;
@@ -845,13 +826,12 @@
         accent-color: currentColor;
     }
 
-    .homescreen {
-        margin: 0 auto;
-        margin-top: 5vw;
+    .home-screen {
+        margin: 20px auto 0;
         display: block;
         background-color: black;
         aspect-ratio: 500/320;
-        width: 90vw;
+        width: 700px;
         max-width: 1024px;
         min-width: 320px;
         object-fit: contain;
@@ -864,7 +844,7 @@
         background-color: transparent;
         border: none;
         color: white;
-        font-size: calc(4em + 5vmin);
+        font-size: 100px;
         transition: transform 0.1s;
     }
 
@@ -874,9 +854,9 @@
 
     .play_svg {
         cursor: pointer;
-        width: 25vw;
+        width: 200px;
         max-width: 200px;
-        padding-top: 8vw;
+        padding-top: 100px;
         display: block;
         margin: 0 auto;
     }
@@ -887,10 +867,9 @@
         color: white;
         display: block;
         margin: 0 auto;
-        margin-top: 5vw;
-        width: 10vw;
+        width: 120px;
         text-align: center;
-        font-size: 1.5vw;
+        font-size: 20px;
         transition: transform 0.1s;
     }
 
@@ -899,8 +878,7 @@
         border: solid 1px white;
         color: white;
         display: block;
-        margin: 0 auto;
-        margin-top: 5vw;
+        margin: 5vw auto 0;
         width: 20vw;
         text-align: center;
         font-size: 1.5vw;
@@ -960,8 +938,7 @@
     }
 
     .endgame {
-        margin: 0 auto;
-        margin-top: 10vw;
+        margin: 10vw auto 0;
         display: block;
         aspect-ratio: 500/320;
         width: 90vw;
@@ -978,11 +955,22 @@
         border-radius: 5%;
         color: white;
         display: block;
-        margin: 0 auto;
         font-size: 2vw;
-        margin-top: 5vw;
+        margin: 5vw auto 0;
         transition: transform 0.1s;
         padding: 2vw;
+    }
+
+    .ingame {
+        display: block; align-items:center;
+        display: flex;
+        align-items: center;
+        margin: 50px auto;
+        text-align: center;
+        width: 90vw;
+        height: 20vw;
+        border-top: 2px dotted black;
+        border-bottom: 2px dotted black;
     }
 
     .forfeit_button {
@@ -1032,7 +1020,7 @@
     .my-buttons {
         cursor: pointer;
         display: flex;
-        text-align: centers;
+        text-align: center;
         width: 400px;
         margin: 0 auto;
     }
@@ -1064,10 +1052,10 @@
     }
 
     .watchLive {
-        margin-top: -50vw;
+        margin-top: -500px;
         color: black;
         text-align: center;
-        font-size: 3vw
+        font-size: 60px;
     }
 
     #accept:hover {
@@ -1082,7 +1070,7 @@
         color: dimgrey;
         font-style: italic;
         text-align: center;
-        font-size: 2vw;
+        font-size: 40px;
     }
 
     @media only screen and (min-width: 1000px) {

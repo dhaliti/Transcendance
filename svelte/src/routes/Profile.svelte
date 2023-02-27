@@ -415,11 +415,11 @@
                     ACHIEVEMENTS
                 </h1>
                 <div class="achievements">
-                    {#if $wins === 0 && friends.length === 0 && $ownmail === 'false'}
+                    {#if $wins == 0 && friends.length == 0 && $ownmail !== 'true'}
                         <h4>
                             No achievements to display yet
                         </h4>
-                    {:else if $wins !== 0}
+                    {:else if $wins != 0}
                         <p>
               <span style="text-transform: uppercase; font-weight: 600;"
               >🥇 One first win 🥇</span

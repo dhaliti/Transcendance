@@ -142,8 +142,9 @@
         </div>
     {:else}
         <a href={`${BACKEND_URL}/auth/42`} class="api">
-            Connect with<br><img src="img/42_logo.png" style='width: 5vw' alt="42 logo"/>
+            Connect with<br><img src="img/42_logo.png" style='width: 60px' alt="42 logo"/>
         </a>
+        <button class="preview" on:click={() => {$logged = 'true'}}>Preview</button>
     {/if}
 </main>
 
@@ -173,10 +174,8 @@
     .api {
         color: rgb(255, 255, 255);
         text-align: center;
-        width: 15vw;
-        max-width: 90px;
-        min-width: 50px;
-        padding: 2vw 8vw;
+        width: 200px;
+        padding: 20px;
         align-items: center;
         align-content: center;
         font-size: clamp(13px, 2vw, 16px);
@@ -185,6 +184,14 @@
         background-color: rgb(25, 184, 173);
         line-height: 2;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .preview {
+        border: 2px solid black;
+        background-color: lightgray;
+        color: black;
+        padding: 15px;
+        margin-top: 20px;
     }
 
     ::-webkit-input-placeholder {
